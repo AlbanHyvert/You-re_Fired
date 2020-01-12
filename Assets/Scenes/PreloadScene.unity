@@ -1,0 +1,560 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 11
+  m_GIWorkflowMode: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 1
+  m_LightmapEditorSettings:
+    serializedVersion: 10
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVRFilteringMode: 2
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
+  m_LightingDataAsset: {fileID: 0}
+  m_UseShadowmask: 1
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &259383632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259383634}
+  - component: {fileID: 259383633}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &259383633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259383632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d166585e692d14ab59eff2165b4a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &259383634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259383632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &386587697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 386587699}
+  - component: {fileID: 386587698}
+  m_Layer: 0
+  m_Name: GameLoopManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &386587698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386587697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8907c34a7a53384f9b2e9ef0a62c80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &386587699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386587697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &433099998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 433100000}
+  - component: {fileID: 433099999}
+  m_Layer: 0
+  m_Name: CandidateGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &433099999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433099998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0806f92bbed4daa409f0b34e29fd749f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _candidateFile: {fileID: 1919953748287931986, guid: c9eb27f47dacd2c40b1a0553bfbdd06a,
+    type: 3}
+  _candidateGO: {fileID: 8313517703437703703, guid: c9eb27f47dacd2c40b1a0553bfbdd06a,
+    type: 3}
+  _pictureList:
+  - {fileID: 21300000, guid: 742546d8c7a184e4c9bb5a856473c1e3, type: 3}
+  - {fileID: 21300000, guid: bbb894818f755914990881ff05dd6051, type: 3}
+  - {fileID: 21300000, guid: c82c8f99a55868543a0005ed22a735cd, type: 3}
+  - {fileID: 21300000, guid: 3ac018d9be262c944908b321ae18f08e, type: 3}
+  - {fileID: 21300000, guid: ddb0634bc5c104b4f8c6f7153e9e95f9, type: 3}
+  - {fileID: 21300000, guid: a350ecf816ef81141ac1b1095b6a7500, type: 3}
+  - {fileID: 21300000, guid: 96e0d00decc0aa44a9e4b3de707d43a5, type: 3}
+  - {fileID: 21300000, guid: 37cd91056f11c3c4f873ab0651210269, type: 3}
+  - {fileID: 21300000, guid: 29fd29758fc2d4e4c8b08299b792f02b, type: 3}
+  - {fileID: 21300000, guid: 7ebb227403d014f46adb7354d99b1f30, type: 3}
+  - {fileID: 21300000, guid: 7ad28eb2cb097cf41b939556c1796cd6, type: 3}
+  - {fileID: 21300000, guid: 566969d98a88b7c44b8885c7b2ebe5b2, type: 3}
+  - {fileID: 21300000, guid: 9e67541a3924ffc4689fede4e70874da, type: 3}
+  - {fileID: 21300000, guid: d262a98d8d1924841be641e6416ee94f, type: 3}
+  - {fileID: 21300000, guid: 7555547fb04342243831880419d10510, type: 3}
+  - {fileID: 21300000, guid: ea6c0da62c23e3249b7757603e760b10, type: 3}
+  - {fileID: 21300000, guid: e68dbd64251f91a4e8b38dc4563f7857, type: 3}
+  - {fileID: 21300000, guid: ccf63849d483221488f0f704072a44d4, type: 3}
+  - {fileID: 21300000, guid: cd9854abac0f52045ab45a2d66689ede, type: 3}
+  _firstNameList:
+  - "St\xE9phane"
+  - Pierre
+  - Dorian
+  - Juan Carlos
+  - Marc-Henri
+  - Louis
+  - David
+  - Samuel
+  - Octave
+  - Donald
+  - Alexis
+  - Jean-Charles
+  - Didier
+  - Olivier
+  - Nicolas
+  - Rodolphe
+  - Jonathan
+  - Xavier
+  - "Gr\xE9goire"
+  - "R\xE9my"
+  - "Micha\xEBl"
+  - Jean-Claude
+  - Claude
+  - Dimitri
+  - Armand
+  - Enzo
+  - Thomas
+  - Michel
+  - Kevin
+  - Albert
+  - Christopher
+  - Blanche
+  - Julie
+  - "\xC9liane "
+  - Brigitte
+  - Simone
+  - Roseline
+  - Marinette
+  - Coralie
+  - Corinne
+  - Florence
+  - Christelle
+  - Simone
+  - "Cl\xE9mentine"
+  - Alberte
+  - "Nad\xE8ge"
+  - Olivia
+  - Bernadette
+  - Leila
+  - "L\xE9onie"
+  - Gabrielle
+  - "Carolin\xE9"
+  - "Aliz\xE9e"
+  - "L\xE9a"
+  - Nikita
+  - "B\xE9rang\xE8re"
+  - Michelle
+  - Carole
+  - "In\xE8s"
+  - "M\xE9lodie"
+  - Bernouille
+  _lastNameList:
+  - Sauce
+  - Flouze
+  - Dupont
+  - Dupond
+  - Le Foll
+  - Vaillancourt
+  - Delaunay
+  - Crozier
+  - Chauve
+  - Bouthillier
+  - Gide
+  - Nicollier
+  - Thiers
+  - Van Damme
+  - Trump
+  - Thibodeaux
+  - Cerf
+  - Marais
+  - Deschanel
+  - Chabert
+  - Loup
+  - Bissonnette
+  - "H\xE9roux"
+  - Jaubert
+  - Beauvais
+  - Chirac
+  - "M\xE9lenchon"
+  - Jaccoud
+  - Flandin
+  - Lecoq
+  _ageMin: 18
+  _ageMax: 69
+  _rankList: 0100000002000000030000000400000005000000
+  _minSalary: 100
+  _maxSalary: 1000000
+  _descriptionList:
+  - Coucou tu peux m'embaucher stp merci c'est cool
+  - "Bonjour, je suis actuellement \xE0 la recherche d'un emploi stable et r\xE9mun\xE9rateur
+    afin de subvenir a mes besoins primaires en ce monde r\xE9gi par des lois capitalistes"
+  - "Actuellement en deuxi\xE8me ann\xE9e \xE0 l\u2019Ecole Telecom \xE0 Paris/ dipl\xF4m\xE9
+    d'une licence pro en Communication je vous soumets ma candidature au poste d'ing\xE9nieur
+    conseil au sein du d\xE9partement Marketing de votre soci\xE9t\xE9. Je pense en
+    effet que le dynamisme et l\u2019excellence de nom de la soci\xE9t\xE9 me permettront
+    de pratiquer le m\xE9tier d'ing\xE9nieur dans l\u2019environnement le plus propice
+    \xE0 mes attentes et le plus favorable \xE0 la mise en \u0153uvre de mon projet
+    professionnel."
+  - "Actuellement \xE9tudiant en Master Banque et Finance \xE0 l\u2019universit\xE9
+    Jean Le Mould, passionn\xE9 par la finance et l'\xE9conomie en g\xE9n\xE9ral,
+    votre entreprise est une r\xE9f\xE9rence pour beaucoup d'acteurs du march\xE9,
+    je souhaiterais ainsi pouvoir int\xE9grer le d\xE9partement 75, 91, 92, 93, 94
+    ou 95, de votre soci\xE9t\xE9 car apr\xE8s tout, c'est la Champion's League."
+  - "Votre campagne de communication \xAB Venez travailler chez nous c'est pas trop
+    mal \xBB sur la conception de vos produits a \xE9t\xE9 \xE9lue \"R\xE9clame de
+    l'ann\xE9e\". Votre entreprise participe \xE0 la protection de l\u2019environnement,
+    sujet qui me tient \xE0 c\u0153ur. A la recherche de nouveaux challenges professionnels
+    j\u2019aimerais beaucoup int\xE9grer votre \xE9quipe."
+  - "Mon super pote Francky m\u2019a recommand\xE9 de vous contacter pour partager
+    avec vous ma motivation \xE0 rejoindre votre entreprise. J\u2019ai eu l\u2019opportunit\xE9
+    de le rencontrer lors de son intervention \xE0 la foire agricole de Tourcoing.
+    J\u2019\xE9tais pr\xE9sent \xE0 ce salon pour faire de la veille au nom du centre
+    d\u2019innovation du groupe X-Flush o\xF9 je travaille actuellement."
+  - "Dipl\xF4m\xE9 du MSC. Innovation, Strategy and Entrepreneurship \xE0 Grenoble
+    \xC9cole de Management, je suis actuellement \xE0 la recherche d'un emploi li\xE9
+    aux domaines de l'innovation, de la strat\xE9gie, la planification d'entreprise
+    ou projects, ou encore dans le marketing."
+  - "Actuellement \xE0 la recherche d\u2019un emploi en alternance, je vous propose
+    ma candidature pour un contrat de professionnalisation en Master Management des
+    Ressources Humaines afin de pouvoir int\xE9grer d\xE8s la rentr\xE9e prochaine
+    votre entreprise pour une dur\xE9e de 2 ans. Titulaire d\u2019un Brevet de Technicien
+    Sup\xE9rieur Assistant de Manager, je me suis orient\xE9e vers une alternance
+    BACHELOR Ressources Humaines Option Mobilit\xE9 Internationale \xE0 Paris (75011)
+    o\xF9 j\u2019\xE9tudie actuellement."
+  - "Ing\xE9nieur d'\xE9tudes et de d\xE9veloppement, mon exp\xE9rience au cours de
+    mon parcours professionnel m'a permis d'acqu\xE9rir l'exp\xE9rience n\xE9cessaire
+    en ma\xEEtrise d'ouvrage ou en ma\xEEtrise d\u2019\u0153uvre et de mener \xE0
+    bien des projets de d\xE9veloppement. Je d\xE9sire int\xE9grer une \xE9quipe dynamique,
+    je suis sp\xE9cialis\xE9 dans les syst\xE8mes d'information et le d\xE9veloppement
+    Android."
+  - "Responsable marketing, actuellement \xE0 la recherche d'un nouveau d\xE9fi, je
+    vous prie de bien vouloir trouver ci-joint mon CV. J'ai acquis ces derni\xE8res
+    ann\xE9es des comp\xE9tences en gestion de projet marketing, en management d'\xE9quipes
+    commerciales et de managers, en relation client B to B et B to C et en techniques
+    de formation."
+  - "Vous \xEAtes en expansion et souhaitez agrandir votre \xE9quipe ? Vous \xEAtes
+    \xE0 la recherche d'une personne dynamique, autonome, r\xE9fl\xE9chie, cr\xE9ative,
+    curieuse et polyvalente, dot\xE9e d'un tr\xE8s bon r\xE9dactionnel et relationnel
+    ainsi qu'un sens du service et de l'organisation ? Ne cherchez plus, je suis celle
+    qu'il vous faut !"
+  - "Vous recherchez une assistante commerciale dynamique et organis\xE9e, qui soit
+    capable d\u2019assurer la gestion administrative et le support d\u2019une \xE9quipe
+    commerciale, alors ma candidature peut vous int\xE9resser. En effet, mon exp\xE9rience
+    professionnelle vari\xE9e a prouv\xE9 ma capacit\xE9 d\u2019adaptation \xE0 divers
+    secteurs d\u2019activit\xE9 et m\u2019a permis de d\xE9velopper de nombreuses
+    comp\xE9tences administratives et commerciales."
+  - AAAAAAAAAAAAAAAAAAAAAAAA
+--- !u!4 &433100000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433099998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1004139066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1004139068}
+  - component: {fileID: 1004139067}
+  m_Layer: 0
+  m_Name: InputFieldManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1004139067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004139066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e3087635630c24d929aa139c21ee5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1004139068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004139066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1201515833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1201515835}
+  - component: {fileID: 1201515834}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1201515834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201515833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880028c5026487d4f8e2a0fa9710a968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 3888013851304386841, guid: 0d734ceb5629d774cba0c8eaac65b32e,
+    type: 3}
+  _canPlayerInteract: 1
+--- !u!4 &1201515835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201515833}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1911911373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1911911375}
+  - component: {fileID: 1911911374}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1911911374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911911373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 286e3f6cf169a7b4b8c27cff2b500c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: b295b2593f86dde46b69eace8e43fef5, type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
+--- !u!4 &1911911375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911911373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
