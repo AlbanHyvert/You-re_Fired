@@ -41,7 +41,7 @@ public class InputManager : Singleton<InputManager>
 
     private void OnUpdate()
     {
-        if(Input.GetKeyDown(InputFieldManager.Instance.Shuffle.Normalize()))
+        if(Input.GetKeyDown(InputFieldManager.Instance.Shuffle.Normalize()) && _shuffle != null)
         {
             _shuffle();
         }

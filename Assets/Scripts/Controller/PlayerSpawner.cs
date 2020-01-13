@@ -3,11 +3,11 @@
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] Transform _spawnPos = null;
-    [SerializeField] Transform _pickUpPos = null;
+    [SerializeField] Transform _choosenPos = null;
 
-    void Start()
+    void Awake()
     {
         PlayerManager.Instance.InstantiatePlayer(_spawnPos.position, _spawnPos.rotation);
-        PlayerManager.Instance.Player.GetComponent<InteractionsController>().PickUpPos = _pickUpPos;
+        PlayerManager.Instance.Interactions.ChoosenOne = _choosenPos;
     }
 }

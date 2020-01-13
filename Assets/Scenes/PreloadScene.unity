@@ -497,6 +497,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 3888013851304386841, guid: 0d734ceb5629d774cba0c8eaac65b32e,
     type: 3}
+  _interactionController: {fileID: 8427932654794583181, guid: 0d734ceb5629d774cba0c8eaac65b32e,
+    type: 3}
   _canPlayerInteract: 1
 --- !u!4 &1201515835
 Transform:
@@ -541,9 +543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286e3f6cf169a7b4b8c27cff2b500c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: b295b2593f86dde46b69eace8e43fef5, type: 3}
-  cursorMode: 0
-  hotSpot: {x: 0, y: 0}
 --- !u!4 &1911911375
 Transform:
   m_ObjectHideFlags: 0

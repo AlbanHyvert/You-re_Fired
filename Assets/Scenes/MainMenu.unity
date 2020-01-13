@@ -1366,36 +1366,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SETTINGS
       objectReference: {fileID: 0}
-    - target: {fileID: 2451879590671208868, guid: 4560aa0d32a764c49afa7c635c5fb3f1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1319663641519849079, guid: 4560aa0d32a764c49afa7c635c5fb3f1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1768317792}
-    - target: {fileID: 7577842941322889449, guid: 4560aa0d32a764c49afa7c635c5fb3f1,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8407421530020485673, guid: 4560aa0d32a764c49afa7c635c5fb3f1,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8210511981037877695, guid: 4560aa0d32a764c49afa7c635c5fb3f1,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3535536805749172924, guid: 4560aa0d32a764c49afa7c635c5fb3f1,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4560aa0d32a764c49afa7c635c5fb3f1, type: 3}
 --- !u!224 &1783158091 stripped

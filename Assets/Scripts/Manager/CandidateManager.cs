@@ -8,7 +8,7 @@ public class CandidateManager : Singleton<CandidateManager>
     [Header("Candidate File")]
     [SerializeField] private CandidateFile _candidateFile = null;
     [SerializeField] private GameObject _candidateGO = null;
-
+    private int _fileNumber = 0;
     #region CandidateList
     [Header("Picture")]
     [SerializeField] private Sprite[] _pictureList = null;
@@ -32,10 +32,17 @@ public class CandidateManager : Singleton<CandidateManager>
     [Header("Salary")]
     [SerializeField] private int _minSalary = 100;
     [SerializeField] private int _maxSalary = 1000000;
+
     private float _minMultiplicator = 1.1f;
     private float _maxMultiplicator = 2f;
-    private int _salaryList = 0;
-    private int _gainList = 0;
+
+    private int _salary = 0;
+    public int Salary { get { return _salary; } }
+
+    private int _gain = 0;
+    public int Gain { get { return _gain; } }
+
+    private int _tempSalary = 0;
 
     [Header("Description"), TextArea(0, 10)]
     [SerializeField] private string[] _descriptionList = null;
@@ -44,7 +51,8 @@ public class CandidateManager : Singleton<CandidateManager>
     private GameObject _candidatePrefab = null;
     public GameObject CandidatePrefab { get { return _candidatePrefab; } }
 
-    List<GameObject> _candidate = null;
+    private List<GameObject> _candidate = null;
+    public List<GameObject> Candidate { get {return _candidate; } }
     #endregion Fields
 
     private void Start()
@@ -108,35 +116,67 @@ public class CandidateManager : Singleton<CandidateManager>
             _candidateFile.RankTxt.text = "Rank : " + tempInt .ToString();
         }
 
-        if(_salaryList < _maxSalary)
+        if(_salary < _maxSalary)
         {
             float randomSalaryMultiplicator = Random.Range(_minMultiplicator, _maxMultiplicator);
             int randomSalary = (int)(_minSalary * randomSalaryMultiplicator);
-            _salaryList = randomSalary;
-            _candidateFile.SalaryTxt.text = "Salary : " + _salaryList.ToString();
-            _minSalary = randomSalary;
+            _salary = randomSalary;
+            _tempSalary = randomSalary;
 
             float randomGainMultiplicator = Random.Range(_minMultiplicator, _maxMultiplicator);
             int randomGain = Random.Range(randomSalary, (int)(randomSalary * randomGainMultiplicator));
-            _gainList = randomGain;
-            _candidateFile.GainTxt.text = "Gain : " + _gainList.ToString();
+            _gain = randomGain;
         }
     }
 
     public void CreationFile(Vector3 position,Quaternion rotation, Transform parent)
     {
+        _fileNumber++;
         Shuffle();
+        _minSalary = _tempSalary;
+
         _candidatePrefab =  Instantiate(_candidateGO, position, rotation, parent);
+        CandidateFile file = _candidatePrefab.GetComponent<CandidateFile>();
+        file.CandidatePrice = _salary;
+        file.CandidateGain = _gain;
+        _candidatePrefab.name = "Candidate number: " + _fileNumber;
         _candidate.Add(_candidatePrefab);
     }
 
-    public void OnChoosenFile(Vector3 position)
+    public void OnClear()
     {
-        _candidatePrefab.transform.position = position;
+        _minSalary = 100;
+        _tempSalary = 0;
+        _salary = 0;
+        _gain = 0;
+        _age = null;
+
+        foreach (GameObject item in _candidate)
+        {
+            if(item != null)
+            {
+                Object.Destroy(item);
+            }
+        }
+
+        if(_fileNumber > 0)
+        {
+            _fileNumber = 0;
+            _candidate.Clear();
+        }
     }
 
-    public void OnRefusenFile(Vector3 position)
+    public void OnDestroyed(GameObject savedItem)
     {
-        _candidatePrefab.transform.position = position;
+        _candidate.Remove(savedItem);
+        foreach (GameObject item in _candidate)
+        {
+            if (item != null)
+            {
+                Object.Destroy(item);
+            }
+        }
+        _candidate.Clear();
+        _fileNumber = 0;
     }
 }

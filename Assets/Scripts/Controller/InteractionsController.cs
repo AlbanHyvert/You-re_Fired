@@ -4,8 +4,8 @@ public class InteractionsController : MonoBehaviour
 {
     [SerializeField] private Camera _playerCam = null;
 
-    [SerializeField] private Transform _pickUpPos = null;
-    public Transform PickUpPos { get { return _pickUpPos; } set { _pickUpPos = value; } }
+    private Transform _choosenOne = null;
+    public Transform ChoosenOne { get { return _choosenOne; } set { _choosenOne = value; } }
 
     [Header("Layers")]
     [SerializeField] private string _pickableTag = "Pickable";
@@ -16,28 +16,19 @@ public class InteractionsController : MonoBehaviour
 
     public void OnPickUp()
     {
-        _isPick = true;
-        _objectCache.transform.SetParent(_pickUpPos);
-        _objectCache.transform.position = _pickUpPos.position;
-        _objectCache.transform.rotation = _pickUpPos.rotation;
+        CandidateFile file = _objectCache.GetComponent<CandidateFile>();
 
-        _objectCache.useGravity = false;
-        _objectCache.isKinematic = true;
-        _objectCache.detectCollisions = true;
-
-        InputManager.Instance.Interact += OnDrop;
-        InputManager.Instance.Interact -= OnPickUp;
-    }
-
-    public void OnDrop()
-    {
-            _objectCache.transform.SetParent(null);
+        if(PlayerManager.Instance.Money > file.CandidatePrice)
+        {
+            _objectCache.position = PlayerManager.Instance.Interactions.ChoosenOne.position;
             _objectCache.useGravity = true;
             _objectCache.isKinematic = false;
-            _isPick = false;
-            _objectCache = null;
 
-        InputManager.Instance.Interact -= OnDrop;
+            IAction action = _objectCache.GetComponent<IAction>();
+            action.Enter();
+            PlayerManager.Instance.Money -= file.CandidatePrice;
+            InputManager.Instance.Interact -= OnPickUp;
+        }
     }
 
     public void OnUpdate()
@@ -60,15 +51,9 @@ public class InteractionsController : MonoBehaviour
         {
             if(_objectCache != null)
             {
-                _objectCache.transform.SetParent(null);
-
-                _objectCache.useGravity = true;
-                _objectCache.isKinematic = false;
-                _isPick = false;
                 _objectCache = null;
             }
             InputManager.Instance.Interact -= OnPickUp;
-            InputManager.Instance.Interact -= OnDrop;
         }
         Debug.DrawRay(_playerCam.transform.position, _playerCam.transform.forward, Color.black, 10);
     }

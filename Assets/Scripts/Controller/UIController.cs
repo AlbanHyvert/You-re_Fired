@@ -1,18 +1,29 @@
 ﻿using UnityEngine;
-
+using TMPro;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject _hud = null;
     [SerializeField] private GameObject _pausedHud = null;
     [SerializeField] private GameObject _settingHud = null;
+    [SerializeField] private TextMeshProUGUI _moneyUi = null;
 
     private void Start()
     {
+        PlayerManager.Instance.UpdateMoney += MoneyUpdate;
+
         if (_hud != null)
         {
             _hud.SetActive(GameLoopManager.Instance.IsPaused);
             Cursor.lockState = CursorLockMode.Confined;
             GameLoopManager.Instance.GetCanvas += OnUpdate;
+        }
+    }
+
+    private void MoneyUpdate(int value)
+    {
+        if(_moneyUi != null)
+        {
+            _moneyUi.text = "Money : " + value.ToString();
         }
     }
 
@@ -38,6 +49,7 @@ public class UIController : MonoBehaviour
 
     public void OnRestart()
     {
+        CandidateManager.Instance.OnClear();
         GameLoopManager.Instance.IsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
@@ -47,6 +59,8 @@ public class UIController : MonoBehaviour
 
     public void OnMenu()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         GameLoopManager.Instance.IsPaused = false;
         _hud.SetActive(GameLoopManager.Instance.IsPaused);
         GameManager.Instance.ChangeState(GameManager.GameState.MAINMENU);
@@ -70,5 +84,6 @@ public class UIController : MonoBehaviour
     private void OnDestroy()
     {
         GameLoopManager.Instance.GetCanvas -= OnUpdate;
+        PlayerManager.Instance.UpdateMoney -= MoneyUpdate;
     }
 }

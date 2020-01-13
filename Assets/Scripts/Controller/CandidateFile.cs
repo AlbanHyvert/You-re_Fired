@@ -3,9 +3,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
-public class CandidateFile : MonoBehaviour
+public class CandidateFile : MonoBehaviour, IAction
 {
     #region Fields
+    private int _candidatePrice = 0;
+    public int CandidatePrice { get { return _candidatePrice; } set { _candidatePrice = value; } }
+    private int tempPrice = 0;
+
+    private int _candidateGain = 0;
+    public int CandidateGain { get { return _candidateGain; } set { _candidateGain = value; } }
+    private int tempGain = 0;
+
     #region TextMeshPro
     [Header("TextMeshPro")]
     [SerializeField] private Image _pictureImage = null;
@@ -24,9 +32,25 @@ public class CandidateFile : MonoBehaviour
     public TextMeshProUGUI FirstNameTxt { get { return _firstNameTxt; } set { _firstNameTxt = value; } }
     public TextMeshProUGUI LastNameTxt { get { return _lastNameTxt; } set { _lastNameTxt = value; } }
     public TextMeshProUGUI AgeTxt { get { return _ageTxt; } set { _ageTxt = value; } }
-    public TextMeshProUGUI SalaryTxt { get { return _salaryTxt; } set { _salaryTxt = value; } }
-    public TextMeshProUGUI GainTxt { get { return _gainTxt; } set { _gainTxt = value; } }
+   // public TextMeshProUGUI SalaryTxt { get { return _salaryTxt; } }
+   // public TextMeshProUGUI GainTxt { get { return _gainTxt; } }
     public TextMeshProUGUI RankTxt { get { return _rankTxt; } set { _rankTxt = value; } }
     public TextMeshProUGUI DescriptionTxt { get { return _descriptionTxt; } set { _descriptionTxt = value; } }
     #endregion Properties
+
+    public void Start()
+    {
+        _salaryTxt.text = _candidatePrice.ToString();
+        _gainTxt.text = _candidateGain.ToString();
+    }
+
+    void IAction.Enter()
+    {
+        CandidateManager.Instance.OnDestroyed(this.gameObject);
+    }
+
+    void IAction.Exit()
+    {
+
+    }
 }
