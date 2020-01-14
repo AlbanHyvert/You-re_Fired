@@ -26,7 +26,6 @@ public class InteractionsController : MonoBehaviour
 
             IAction action = _objectCache.GetComponent<IAction>();
             action.Enter();
-            PlayerManager.Instance.Money -= file.CandidatePrice;
             InputManager.Instance.Interact -= OnPickUp;
         }
     }

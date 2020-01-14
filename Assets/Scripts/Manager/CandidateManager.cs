@@ -166,7 +166,7 @@ public class CandidateManager : Singleton<CandidateManager>
         }
     }
 
-    public void OnDestroyed(GameObject savedItem)
+    public void OnChooseFile(GameObject savedItem)
     {
         _candidate.Remove(savedItem);
         foreach (GameObject item in _candidate)

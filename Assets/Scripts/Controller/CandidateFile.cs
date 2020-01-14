@@ -8,11 +8,9 @@ public class CandidateFile : MonoBehaviour, IAction
     #region Fields
     private int _candidatePrice = 0;
     public int CandidatePrice { get { return _candidatePrice; } set { _candidatePrice = value; } }
-    private int tempPrice = 0;
 
     private int _candidateGain = 0;
     public int CandidateGain { get { return _candidateGain; } set { _candidateGain = value; } }
-    private int tempGain = 0;
 
     #region TextMeshPro
     [Header("TextMeshPro")]
@@ -46,11 +44,14 @@ public class CandidateFile : MonoBehaviour, IAction
 
     void IAction.Enter()
     {
-        CandidateManager.Instance.OnDestroyed(this.gameObject);
+        Debug.Log(_candidateGain);
+        PlayerManager.Instance.Money -= _candidatePrice;
+        Scoring.Instance.GlobalGain += _candidateGain;
+        CandidateManager.Instance.OnChooseFile(this.gameObject);
     }
 
     void IAction.Exit()
     {
-
+        Scoring.Instance.GlobalGain -= _candidateGain;
     }
 }
