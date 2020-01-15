@@ -39,8 +39,23 @@ public class UIController : MonoBehaviour
     {
         if(_timerMinutes != null && _timerSeconds != null)
         {
-            _timerMinutes.text = min.ToString() + " : ";
-            _timerSeconds.text = sec.ToString();
+            if(sec < 10)
+            {
+                _timerSeconds.text = "0" + sec.ToString();
+            }
+            else
+            {
+                _timerSeconds.text = sec.ToString();
+            }
+
+            if(min < 10)
+            {
+                _timerMinutes.text = "0" + min.ToString() + " : ";
+            }
+            else
+            {
+                _timerMinutes.text = min.ToString() + " : ";
+            }
         }
     }
 
@@ -69,6 +84,7 @@ public class UIController : MonoBehaviour
         PlayerManager.Instance.Money = _tempPlayerMoney;
         Scoring.Instance.TimeMinutes = _tempMinutes;
         Scoring.Instance.TimeSeconds = _tempSeconds;
+        Scoring.Instance.GlobalGain = 0;
         CandidateManager.Instance.OnClear();
         GameLoopManager.Instance.IsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -80,6 +96,7 @@ public class UIController : MonoBehaviour
     public void OnMenu()
     {
         PlayerManager.Instance.Money = _tempPlayerMoney;
+        Scoring.Instance.GlobalGain = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         GameLoopManager.Instance.IsPaused = false;

@@ -14,11 +14,11 @@ public class Scoring : Singleton<Scoring>
     [SerializeField] private int _timeMinutes = 5;
     public int TimeMinutes { get { return _timeMinutes; } set { _timeMinutes = value; } }
 
-    [SerializeField] private int _timeSecond = 60;
+    [SerializeField] private int _timeSecond = 59;
     public int TimeSeconds { get { return _timeSecond; } set { _timeSecond = value; } }
 
     [SerializeField] private float _gainTimer = 1.1f;
-    [SerializeField] private float _globalTimer = 60f;
+    [SerializeField] private float _globalTimer = 59f;
 
     private Timer _gainTime = null;
     private Timer _globalTime = null;
@@ -57,7 +57,7 @@ public class Scoring : Singleton<Scoring>
                 if (_timeSecond <= 0)
                 {
                     _timeMinutes--;
-                    _timeSecond = 60;
+                    _timeSecond = 59;
                 }
 
                 if (_globalTime.TimeLeft >= 0)
@@ -77,14 +77,13 @@ public class Scoring : Singleton<Scoring>
                 else
                 {
                     _gainTime.ResetTimer(_gainTimer);
-                    PlayerManager.Instance.Money += (int)(_globalGain / 30);
+                    PlayerManager.Instance.Money += (int)(_globalGain / 15);
                 }
             }
             else
             {
                 GameLoopManager.Instance.IsPaused = true;
             }
-            Debug.Log(_globalTime.TimeLeft);
             _minutesSeconds(_timeMinutes, _timeSecond);
         }
     }

@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeMinutes: 5
-  _timeSecond: 60
+  _timeSecond: 59
   _gainTimer: 1.1
-  _globalTimer: 60
+  _globalTimer: 59
 --- !u!4 &34330389
 Transform:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 433100000}
   - component: {fileID: 433099999}
   m_Layer: 0
-  m_Name: CandidateGenerator
+  m_Name: CandidateManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,6 +280,16 @@ MonoBehaviour:
     type: 3}
   _legendaryGO:
   - {fileID: 8313517703437703703, guid: 791ec4411b56f4342984851855e20a33, type: 3}
+  - {fileID: 8313517703437703703, guid: 0236f75b92f11dd4cb4944a6abf7888f, type: 3}
+  - {fileID: 8313517703437703703, guid: 00eec959f788328449364f639dcc5e86, type: 3}
+  - {fileID: 8313517703437703703, guid: 15680e60b50eccb46b6d6376ee551557, type: 3}
+  - {fileID: 8313517703437703703, guid: 835e1b305ecceff418efcde1c9cb66cf, type: 3}
+  - {fileID: 8313517703437703703, guid: d5efbf517013e5d43863eeddcefd111e, type: 3}
+  - {fileID: 8313517703437703703, guid: a7add8edc1fb82c40aeec4edf9c4118a, type: 3}
+  - {fileID: 8313517703437703703, guid: 4f3a9e83f57cd404b8535018dee204fa, type: 3}
+  - {fileID: 8313517703437703703, guid: 9e82c175c0d57d240ac3b4c9a567ff69, type: 3}
+  - {fileID: 8313517703437703703, guid: 8638420f6d109f94aab47e97f2d6c84b, type: 3}
+  - {fileID: 8313517703437703703, guid: a8609bfb4a36b3749b495cbf6f7594da, type: 3}
   _legendaryLuck: 90
   _pictureList:
   - {fileID: 21300000, guid: 742546d8c7a184e4c9bb5a856473c1e3, type: 3}

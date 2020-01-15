@@ -37,6 +37,7 @@ public class CandidateManager : Singleton<CandidateManager>
 
     [Header("Salary")]
     [SerializeField] private int _minSalary = 100;
+    public int MinSalary { get { return _minSalary; } set { _minSalary = value; } }
     [SerializeField] private int _maxSalary = 1000000;
 
     private float _minMultiplicator = 1.1f;
@@ -49,6 +50,7 @@ public class CandidateManager : Singleton<CandidateManager>
     public int Gain { get { return _gain; } }
 
     private int _tempSalary = 0;
+    public int TempSalary { get { return _tempSalary; } }
 
     [Header("Description"), TextArea(0, 10)]
     [SerializeField] private string[] _descriptionList = null;
@@ -123,7 +125,7 @@ public class CandidateManager : Singleton<CandidateManager>
 
             int randomAge = Random.Range(_ageMin, _ageMax);
             _age = randomAge.ToString();
-            _candidateFile.AgeTxt.text = "Age : " + _age;
+            _candidateFile.AgeTxt.text = _age + " ans";
 
             for (int i = 0; i < _descriptionList.Length; i++)
             {
@@ -194,7 +196,6 @@ public class CandidateManager : Singleton<CandidateManager>
     {
         _fileNumber++;
         Shuffle();
-        _minSalary = _tempSalary;
 
         if (_isLegendary == false)
         {

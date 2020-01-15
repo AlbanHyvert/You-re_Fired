@@ -25,6 +25,7 @@ public class CandidateGenerator : MonoBehaviour
             }
             InputManager.Instance.Shuffle -= OnShuffle;
         }
+        CandidateManager.Instance.MinSalary = CandidateManager.Instance.TempSalary;
     }
 
     private void Update()
