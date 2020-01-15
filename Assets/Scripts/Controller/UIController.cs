@@ -7,17 +7,21 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _pausedHud = null;
     [SerializeField] private GameObject _settingHud = null;
     [SerializeField] private TextMeshProUGUI _moneyUi = null;
+    [SerializeField] private TextMeshProUGUI _gain = null;
     [SerializeField] private TextMeshProUGUI _timerMinutes = null;
     [SerializeField] private TextMeshProUGUI _timerSeconds = null;
+
     private int _tempPlayerMoney = 0;
     private int _tempMinutes = 0;
     private int _tempSeconds = 0;
     private void Start()
     {
+        _gain.text = Scoring.Instance.GlobalGain.ToString();
         _tempMinutes = Scoring.Instance.TimeMinutes;
         _tempSeconds = Scoring.Instance.TimeSeconds;
         _tempPlayerMoney = PlayerManager.Instance.Money;
         PlayerManager.Instance.UpdateMoney += MoneyUpdate;
+        Scoring.Instance.UIGain += GainUpdate;
         Scoring.Instance.MinutesSeconds += TimeUpdate;
 
         if (_hud != null)
@@ -28,11 +32,19 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private void MoneyUpdate(int value)
+    private void MoneyUpdate(int money)
     {
         if(_moneyUi != null)
         {
-            _moneyUi.text = "Money : " + UIHelper.FormatIntegerString(value);
+            _moneyUi.text = "Money : " + UIHelper.FormatIntegerString(money);
+        }
+    }
+
+    private void GainUpdate(int gain)
+    {
+        if (_gain != null)
+        {
+            _gain.text = "Gain: + " + UIHelper.FormatIntegerString(gain) + "/m";
         }
     }
 
@@ -123,6 +135,9 @@ public class UIController : MonoBehaviour
     private void OnDestroy()
     {
         GameLoopManager.Instance.GetCanvas -= OnUpdate;
+        PlayerManager.Instance.UpdateMoney -= MoneyUpdate;
+        Scoring.Instance.UIGain -= MoneyUpdate;
+        Scoring.Instance.MinutesSeconds -= TimeUpdate;
         PlayerManager.Instance.UpdateMoney -= MoneyUpdate;
     }
 }

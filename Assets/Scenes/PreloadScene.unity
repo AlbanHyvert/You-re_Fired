@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeMinutes: 5
   _timeSecond: 59
-  _gainTimer: 1.1
+  _gainTimer: 1
   _globalTimer: 59
 --- !u!4 &34330389
 Transform:

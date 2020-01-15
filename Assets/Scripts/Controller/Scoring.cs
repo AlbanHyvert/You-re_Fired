@@ -37,6 +37,20 @@ public class Scoring : Singleton<Scoring>
         }
     }
 
+    private event Action<int> _uIGain = null;
+    public event Action<int> UIGain
+    {
+        add
+        {
+            _uIGain -= value;
+            _uIGain += value;
+        }
+        remove
+        {
+            _uIGain -= value;
+        }
+    }
+
     private void Start()
     {
         _gainTime = new Timer();
@@ -52,6 +66,7 @@ public class Scoring : Singleton<Scoring>
     {
         if (_minutesSeconds != null && GameManager.Instance.CurrentState == GameManager.GameState.GAME)
         {
+            _uIGain(_globalGain);
             if (_timeMinutes >= 0 && _timeSecond >= 0)
             {
                 if (_timeSecond <= 0)
@@ -77,7 +92,7 @@ public class Scoring : Singleton<Scoring>
                 else
                 {
                     _gainTime.ResetTimer(_gainTimer);
-                    PlayerManager.Instance.Money += (int)(_globalGain / 15);
+                    PlayerManager.Instance.Money += (int)(_globalGain / 60);
                 }
             }
             else
