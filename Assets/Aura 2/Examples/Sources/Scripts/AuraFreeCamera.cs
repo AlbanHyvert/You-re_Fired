@@ -18,7 +18,6 @@ namespace Aura2API //Original from Unity, changed namespace to avoid conflicts w
         {
             m_yaw = transform.rotation.eulerAngles.y;
             m_pitch = transform.rotation.eulerAngles.x;
-            Cursor.visible = showCursor;
         }
 
         void Update()

@@ -14,9 +14,12 @@ public class UIController : MonoBehaviour
     private int _tempPlayerMoney = 0;
     private int _tempMinutes = 0;
     private int _tempSeconds = 0;
+
     private void Start()
     {
-        _gain.text = Scoring.Instance.GlobalGain.ToString();
+        GameLoopManager.Instance.IsPaused = false;
+        if (_gain != null)
+            _gain.text = Scoring.Instance.GlobalGain.ToString();
         _tempMinutes = Scoring.Instance.TimeMinutes;
         _tempSeconds = Scoring.Instance.TimeSeconds;
         _tempPlayerMoney = PlayerManager.Instance.Money;
@@ -27,7 +30,6 @@ public class UIController : MonoBehaviour
         if (_hud != null)
         {
             _hud.SetActive(GameLoopManager.Instance.IsPaused);
-            Cursor.lockState = CursorLockMode.Confined;
             GameLoopManager.Instance.GetCanvas += OnUpdate;
         }
     }
@@ -89,7 +91,7 @@ public class UIController : MonoBehaviour
 
     public void OnStart()
     {
-        GameManager.Instance.ChangeState(GameManager.GameState.GAME);
+        GameManager.Instance.ChangeState(GameManager.GameStates.GAME);
     }
 
     public void OnRestart()
@@ -100,21 +102,17 @@ public class UIController : MonoBehaviour
         Scoring.Instance.GlobalGain = 0;
         CandidateManager.Instance.OnClear();
         GameLoopManager.Instance.IsPaused = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
         _hud.SetActive(GameLoopManager.Instance.IsPaused);
-        GameManager.Instance.ChangeState(GameManager.GameState.GAME);
+        GameManager.Instance.ChangeState(GameManager.GameStates.GAME);
     }
 
     public void OnMenu()
     {
         PlayerManager.Instance.Money = _tempPlayerMoney;
         Scoring.Instance.GlobalGain = 0;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         GameLoopManager.Instance.IsPaused = false;
         _hud.SetActive(GameLoopManager.Instance.IsPaused);
-        GameManager.Instance.ChangeState(GameManager.GameState.MAINMENU);
+        GameManager.Instance.ChangeState(GameManager.GameStates.MAINMENU);
     }
 
     public void OnQuit()
@@ -122,11 +120,14 @@ public class UIController : MonoBehaviour
         Application.Quit();
     }
 
+    public void OnCredits()
+    {
+        GameManager.Instance.ChangeState(GameManager.GameStates.CREDITS);
+    }
+
     public void OnResume()
     {
         GameLoopManager.Instance.IsPaused = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
         _pausedHud.SetActive(!GameLoopManager.Instance.IsPaused);
         _settingHud.SetActive(GameLoopManager.Instance.IsPaused);
         _hud.SetActive(GameLoopManager.Instance.IsPaused);

@@ -5,35 +5,37 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     #region Fields
-    public enum GameState
+    public enum GameStates
     {
         PRELOAD,
         MAINMENU,
-        GAME
+        GAME,
+        CREDITS
     }
 
-    private GameState _currentState = GameState.PRELOAD;
-    private Dictionary<GameState, IGameState> _states = null;
+    private GameStates _currentState = GameStates.PRELOAD;
+    private Dictionary<GameStates, IGameState> _states = null;
     private Rigidbody _physics = null;
     #endregion Fields
 
     #region Properties
-    public GameState CurrentState { get { return _currentState; } }
+    public GameStates CurrentState { get { return _currentState; } }
     public IGameState CurrentStateType { get { return _states[_currentState]; } }
     #endregion Properties
 
     #region Methods
     private void Start()
     {
-        _states = new Dictionary<GameState, IGameState>();
-        _states.Add(GameState.PRELOAD, new PreloadState());
-        _states.Add(GameState.MAINMENU, new MainMenuState());
-        _states.Add(GameState.GAME, new global::GameState());
-        _currentState = GameState.PRELOAD;
-        ChangeState(GameState.MAINMENU);
+        _states = new Dictionary<GameStates, IGameState>();
+        _states.Add(GameStates.PRELOAD, new PreloadState());
+        _states.Add(GameStates.MAINMENU, new MainMenuState());
+        _states.Add(GameStates.GAME, new GameState());
+        _states.Add(GameStates.CREDITS, new CreditsState());
+        _currentState = GameStates.PRELOAD;
+        ChangeState(GameStates.MAINMENU);
     }
 
-    public void ChangeState(GameState nextState)
+    public void ChangeState(GameStates nextState)
     {
         _states[_currentState].Exit();
         _states[nextState].Enter();
