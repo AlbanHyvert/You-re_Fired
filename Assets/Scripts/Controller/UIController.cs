@@ -6,10 +6,18 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _pausedHud = null;
     [SerializeField] private GameObject _settingHud = null;
     [SerializeField] private TextMeshProUGUI _moneyUi = null;
-
+    [SerializeField] private TextMeshProUGUI _timerMinutes = null;
+    [SerializeField] private TextMeshProUGUI _timerSeconds = null;
+    private int _tempPlayerMoney = 0;
+    private int _tempMinutes = 0;
+    private int _tempSeconds = 0;
     private void Start()
     {
+        _tempMinutes = Scoring.Instance.TimeMinutes;
+        _tempSeconds = Scoring.Instance.TimeSeconds;
+        _tempPlayerMoney = PlayerManager.Instance.Money;
         PlayerManager.Instance.UpdateMoney += MoneyUpdate;
+        Scoring.Instance.MinutesSeconds += TimeUpdate;
 
         if (_hud != null)
         {
@@ -24,6 +32,15 @@ public class UIController : MonoBehaviour
         if(_moneyUi != null)
         {
             _moneyUi.text = "Money : " + value.ToString();
+        }
+    }
+
+    private void TimeUpdate(int min, int sec)
+    {
+        if(_timerMinutes != null && _timerSeconds != null)
+        {
+            _timerMinutes.text = min.ToString() + " : ";
+            _timerSeconds.text = sec.ToString();
         }
     }
 
@@ -49,6 +66,9 @@ public class UIController : MonoBehaviour
 
     public void OnRestart()
     {
+        PlayerManager.Instance.Money = _tempPlayerMoney;
+        Scoring.Instance.TimeMinutes = _tempMinutes;
+        Scoring.Instance.TimeSeconds = _tempSeconds;
         CandidateManager.Instance.OnClear();
         GameLoopManager.Instance.IsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -59,6 +79,7 @@ public class UIController : MonoBehaviour
 
     public void OnMenu()
     {
+        PlayerManager.Instance.Money = _tempPlayerMoney;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         GameLoopManager.Instance.IsPaused = false;

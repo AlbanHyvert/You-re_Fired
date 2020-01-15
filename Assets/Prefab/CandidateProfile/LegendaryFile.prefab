@@ -1610,6 +1610,7 @@ GameObject:
   - component: {fileID: 8313517703437703702}
   - component: {fileID: 8313517703437703701}
   - component: {fileID: 1168950133766440009}
+  - component: {fileID: 114640353847524096}
   m_Layer: 0
   m_Name: LegendaryFile
   m_TagString: Pickable
@@ -1663,3 +1664,24 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &114640353847524096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313517703437703703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e90cd0e7c933de4c9a03ece42be598f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pictureImage: {fileID: 5427434406797794923, guid: c9eb27f47dacd2c40b1a0553bfbdd06a,
+    type: 3}
+  _firstNameTxt: {fileID: 7003319907165573206}
+  _lastNameTxt: {fileID: 6835887743064755419}
+  _ageTxt: {fileID: 2116899278326225513}
+  _salaryTxt: {fileID: 3431629108100292005}
+  _gainTxt: {fileID: 1799727590190961806}
+  _rankTxt: {fileID: 3225172952929095354}
+  _descriptionTxt: {fileID: 6961472625381678349}

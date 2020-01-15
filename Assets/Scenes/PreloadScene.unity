@@ -141,7 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7263f7b3fbb0ec45a2b54a018f4faea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timer: 10
+  _timeMinutes: 5
+  _timeSecond: 60
+  _gainTimer: 1.1
+  _globalTimer: 60
 --- !u!4 &34330389
 Transform:
   m_ObjectHideFlags: 0
@@ -275,6 +278,9 @@ MonoBehaviour:
     type: 3}
   _candidateGO: {fileID: 8313517703437703703, guid: c9eb27f47dacd2c40b1a0553bfbdd06a,
     type: 3}
+  _legendaryGO:
+  - {fileID: 8313517703437703703, guid: 791ec4411b56f4342984851855e20a33, type: 3}
+  _legendaryLuck: 90
   _pictureList:
   - {fileID: 21300000, guid: 742546d8c7a184e4c9bb5a856473c1e3, type: 3}
   - {fileID: 21300000, guid: bbb894818f755914990881ff05dd6051, type: 3}
@@ -356,7 +362,11 @@ MonoBehaviour:
   - Carole
   - "In\xE8s"
   - "M\xE9lodie"
-  - Bernouille
+  - "Th\xE9o"
+  - "Aur\xE9lien"
+  - SAMODEUS
+  - Alban
+  - SAM
   _lastNameList:
   - Sauce
   - Flouze
@@ -388,11 +398,16 @@ MonoBehaviour:
   - Jaccoud
   - Flandin
   - Lecoq
+  - Bacoux
+  - Giroud
+  - SAMODEUS
+  - Hyvert
+  - ODEUS
   _ageMin: 18
   _ageMax: 69
   _rankList: 0100000002000000030000000400000005000000
   _minSalary: 100
-  _maxSalary: 1000000
+  _maxSalary: 1000000000
   _descriptionList:
   - Coucou tu peux m'embaucher stp merci c'est cool
   - "Bonjour, je suis actuellement \xE0 la recherche d'un emploi stable et r\xE9mun\xE9rateur
@@ -453,6 +468,37 @@ MonoBehaviour:
     secteurs d\u2019activit\xE9 et m\u2019a permis de d\xE9velopper de nombreuses
     comp\xE9tences administratives et commerciales."
   - AAAAAAAAAAAAAAAAAAAAAAAA
+  - "Apr\xE8s un master en procrastination, je viens vers vous pour dormir lors de
+    mes heures de travail."
+  - ~Toss a coin to your big boss, Oh that job is greedy, oh that job is greeeedy,
+    oh oh OH~
+  - "Bonjour, je suis l'un des plus grand dompteurs d'ours au monde. Je suis pr\xEAt
+    \xE0 travailler avec mes futurs animaux de compagnie que vous appelez \"coll\xE8gues\"
+    dans les plus bref d\xE9lais."
+  - "Cireur de chaussures n\xE9, je me tiens devant votre auguste personne pour vous
+    d\xE9montrer l'existence de personnes telle que moi, qui donneront tout pour vous,
+    y compris la vie. J'ai travaill\xE9 aussi en tant que vendeur de tapis, et suis
+    pr\xEAt \xE0 assurer la communication de l'entreprise de part mon exp\xE9rience.\r\n"
+  - "\uB098\uB294 \uBB34\uC5C7\uC744 \uC4F8 \uC904 \uBAB0\uB790\uACE0 \uD55C\uAD6D\uC5B4\uB85C
+    \uC7AC\uBBF8\uC788\uAC8C \uAE00\uC744 \uC37C\uB2E4. \uAE00\uC384, \uC804\uD600
+    \uC7AC\uBBF8\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4. \uC6B0\uB9AC\uB294 \uBAA8\uB450 \uB9E4\uC6B0
+    \uC7AC\uBBF8\uC788\uAC8C \uD0DC\uC5B4\uB09C \uAC83\uC740 \uC544\uB2D9\uB2C8\uB2E4.\r\n"
+  - "Patron ! Patron ! Je reviens du futur ! Il faut absolument que vous m'embauchiez
+    avant ce soir ! Sinon le temps risque de ne plus s'\xE9couler de la m\xEAme mani\xE8re.
+    Et la dilatation temporelle va encore se dilater !"
+  - "HEEEEEY ! Salut tout le monde, c'est moi ! Et on se retrouve, on se retrouve
+    aujourd'hui pour un \xE9v\xE8nement sp\xE9cial, puisque je suis avec mon futur
+    patron, comment \xE7a va ? Vous allez bien ?\r\n"
+  - " \u0643\u0645\u0627 \u0647\u0648 \u0627\u0644\u062D\u0627\u0644 \u0645\u0639
+    \u0627\u0644\u0643\u0648\u0631\u064A\u0629 \u060C \u0645\u0627 \u0632\u0644\u062A
+    \u0644\u0627 \u0623\u0639\u0631\u0641 \u0645\u0627\u0630\u0627 \u0623\u0643\u062A\u0628.
+    \u0644\u0630\u0644\u0643 \u060C \u0641\u064A \u0627\u0644\u0643\u0633\u0644 \u060C
+    \u0623\u0643\u062A\u0628 \u0628\u0627\u0644\u0644\u063A\u0629 \u0627\u0644\u0639\u0631\u0628\u064A\u0629"
+  - "Se stai cercando di tradurre, non hai niente di meglio da fare. Tanta energia
+    sprecata per niente, quando dovrei gi\xE0 essere assunto."
+  - " Psykokwak. Psykokwak. Psykokwak. Psykokwak. Psykokwak. Psykokwak. Psykokwak.
+    Psykokwak. Psykokwak. Psykokwak.\r\n"
+  - VOUS ALLEZ M'EMBAUCHER POUR LA VIE EN CDI ! CAR C'EST NOTRE PROJEEEEEEEEEET
 --- !u!4 &433100000
 Transform:
   m_ObjectHideFlags: 0
@@ -545,7 +591,7 @@ MonoBehaviour:
     type: 3}
   _canPlayerInteract: 1
   _hp: 100
-  _money: 200
+  _money: 700
 --- !u!4 &1201515835
 Transform:
   m_ObjectHideFlags: 0

@@ -38,13 +38,12 @@ public class CandidateFile : MonoBehaviour, IAction
 
     public void Start()
     {
-        _salaryTxt.text = _candidatePrice.ToString();
-        _gainTxt.text = _candidateGain.ToString();
+        _salaryTxt.text ="Salary: " + _candidatePrice.ToString();
+        _gainTxt.text = "Gain: " +_candidateGain.ToString();
     }
 
     void IAction.Enter()
     {
-        Debug.Log(_candidateGain);
         PlayerManager.Instance.Money -= _candidatePrice;
         Scoring.Instance.GlobalGain += _candidateGain;
         CandidateManager.Instance.OnChooseFile(this.gameObject);
