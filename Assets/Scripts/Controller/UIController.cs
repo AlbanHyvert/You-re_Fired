@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using Helper;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject _hud = null;
@@ -31,7 +32,7 @@ public class UIController : MonoBehaviour
     {
         if(_moneyUi != null)
         {
-            _moneyUi.text = "Money : " + value.ToString();
+            _moneyUi.text = "Money : " + UIHelper.FormatIntegerString(value);
         }
     }
 

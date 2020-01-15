@@ -145,7 +145,9 @@ public class CandidateManager : Singleton<CandidateManager>
                 _rankList[i] = tempRange;
             }
         }
+
         _candidateFile.RankTxt.text = "Rank : " + tempRange.ToString();
+
         if (_salary < _maxSalary)
         {
             if (tempRange == 1)

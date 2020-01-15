@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Helper;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,9 @@ public class CandidateFile : MonoBehaviour, IAction
 
     private int _candidateGain = 0;
     public int CandidateGain { get { return _candidateGain; } set { _candidateGain = value; } }
+
+    private int _candidateBounty = 0;
+    public int CandidateBounty { get { return _candidateBounty; } }
 
     #region TextMeshPro
     [Header("TextMeshPro")]
@@ -38,8 +42,8 @@ public class CandidateFile : MonoBehaviour, IAction
 
     public void Start()
     {
-        _salaryTxt.text ="Salary: " + _candidatePrice.ToString();
-        _gainTxt.text = "Gain: " +_candidateGain.ToString();
+        _salaryTxt.text ="Salary: " + UIHelper.FormatIntegerString(_candidatePrice);
+        _gainTxt.text = "Gain: " + UIHelper.FormatIntegerString(_candidateGain);
     }
 
     void IAction.Enter()
