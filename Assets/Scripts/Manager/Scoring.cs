@@ -6,23 +6,28 @@ using System;
 
 public class Scoring : Singleton<Scoring>
 {
+    #region Fields
     private List<GameObject> _files = null;
 
     private int _globalGain = 0;
-    public int GlobalGain { get { return _globalGain; } set { _globalGain = value; } }
 
     [SerializeField] private int _timeMinutes = 5;
-    public int TimeMinutes { get { return _timeMinutes; } set { _timeMinutes = value; } }
-
     [SerializeField] private int _timeSecond = 59;
-    public int TimeSeconds { get { return _timeSecond; } set { _timeSecond = value; } }
 
     [SerializeField] private float _gainTimer = 1.1f;
     [SerializeField] private float _globalTimer = 59f;
 
     private Timer _gainTime = null;
     private Timer _globalTime = null;
+    #endregion Fields
 
+    #region Properties
+    public int TimeSeconds { get { return _timeSecond; } set { _timeSecond = value; } }
+    public int TimeMinutes { get { return _timeMinutes; } set { _timeMinutes = value; } }
+    public int GlobalGain { get { return _globalGain; } set { _globalGain = value; } }
+    #endregion Properties
+
+    #region Events
     private event Action<int, int> _minutesSeconds = null;
     public event Action<int, int> MinutesSeconds
     {
@@ -50,6 +55,7 @@ public class Scoring : Singleton<Scoring>
             _uIGain -= value;
         }
     }
+    #endregion Events
 
     private void Start()
     {
@@ -97,12 +103,14 @@ public class Scoring : Singleton<Scoring>
             }
             else
             {
-                GameManager.Instance.ChangeState(GameManager.GameStates.CREDITS);
+                _timeMinutes = 0;
+                _timeSecond = 0;
+                _globalTimer = 0;
+                GameLoopManager.Instance.IsPaused = true;
             }
             _minutesSeconds(_timeMinutes, _timeSecond);
         }
     }
-
     protected override void OnDestroy()
     {
         GameLoopManager.Instance.GetPlayer -= OnUpdate;

@@ -2,12 +2,13 @@
 
 public class CameraController : MonoBehaviour
 {
+    #region Fields
     [Header("Player")]
     [SerializeField] private Camera _cam = null;
 
-    [Header("Min & Max Y Rotation"), Range(0,-360)]
+    [Header("Min & Max Y Rotation"), Range(0, -360)]
     [SerializeField] private float _minVertX = -45f;
-    [Range(0,360)]
+    [Range(0, 360)]
     [SerializeField] private float _maxVertX = 45f;
 
     [Header("Min & Max X Rotation"), Range(0, -360)]
@@ -17,14 +18,16 @@ public class CameraController : MonoBehaviour
 
     private float _rotationX = 0f;
     private float _rotationY = 0f;
+    #endregion Fields
 
+    #region Methods
     private void Start()
     {
         GameLoopManager.Instance.GetCamera += OnUpdate;
         if (_cam == null)
         {
             _cam = GetComponentInChildren<Camera>();
-            if(_cam == null)
+            if (_cam == null)
             {
                 throw new System.Exception("CameraController is trying to access a non-existant object" + _cam + "Exiting");
             }
@@ -44,11 +47,11 @@ public class CameraController : MonoBehaviour
         _rotationY = Mathf.Clamp(_rotationY, _minVertY, _maxVertY);
 
         _cam.transform.localEulerAngles = new Vector3(_rotationX, _rotationY, 0);
-        //_cam.transform.localEulerAngles = new Vector3(0, rotationY, 0);
     }
 
     private void OnDestroy()
     {
         GameLoopManager.Instance.GetCamera -= OnUpdate;
     }
+    #endregion Methods
 }

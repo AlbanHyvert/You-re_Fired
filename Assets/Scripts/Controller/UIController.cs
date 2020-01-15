@@ -3,18 +3,22 @@ using TMPro;
 using Helper;
 public class UIController : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private GameObject _hud = null;
     [SerializeField] private GameObject _pausedHud = null;
     [SerializeField] private GameObject _settingHud = null;
+    [SerializeField] private GameObject _gameOver = null;
     [SerializeField] private TextMeshProUGUI _moneyUi = null;
     [SerializeField] private TextMeshProUGUI _gain = null;
-    [SerializeField] private TextMeshProUGUI _timerMinutes = null;
-    [SerializeField] private TextMeshProUGUI _timerSeconds = null;
+    [SerializeField] private TextMeshProUGUI _timerMinutes_txt = null;
+    [SerializeField] private TextMeshProUGUI _timerSeconds_txt = null;
 
     private int _tempPlayerMoney = 0;
     private int _tempMinutes = 0;
     private int _tempSeconds = 0;
+    #endregion Fields
 
+    #region Methods
     private void Start()
     {
         GameLoopManager.Instance.IsPaused = false;
@@ -36,7 +40,7 @@ public class UIController : MonoBehaviour
 
     private void MoneyUpdate(int money)
     {
-        if(_moneyUi != null)
+        if (_moneyUi != null)
         {
             _moneyUi.text = "Money : " + UIHelper.FormatIntegerString(money);
         }
@@ -52,30 +56,35 @@ public class UIController : MonoBehaviour
 
     private void TimeUpdate(int min, int sec)
     {
-        if(_timerMinutes != null && _timerSeconds != null)
+        if (_timerMinutes_txt != null && _timerSeconds_txt != null)
         {
-            if(sec < 10)
+            if (sec < 10)
             {
-                _timerSeconds.text = "0" + sec.ToString();
+                _timerSeconds_txt.text = "0" + sec.ToString();
             }
             else
             {
-                _timerSeconds.text = sec.ToString();
+                _timerSeconds_txt.text = sec.ToString();
             }
 
-            if(min < 10)
+            if (min < 10)
             {
-                _timerMinutes.text = "0" + min.ToString() + " : ";
+                _timerMinutes_txt.text = "0" + min.ToString() + " : ";
             }
             else
             {
-                _timerMinutes.text = min.ToString() + " : ";
+                _timerMinutes_txt.text = min.ToString() + " : ";
             }
         }
     }
 
     private void OnUpdate()
     {
+        if(Scoring.Instance.TimeMinutes <= 0 && Scoring.Instance.TimeSeconds <= 0)
+        {
+            _gameOver.SetActive(true);
+        }
+
         if (GameLoopManager.Instance.IsPaused == true)
         {
             Cursor.lockState = CursorLockMode.None;
@@ -87,11 +96,6 @@ public class UIController : MonoBehaviour
         }
 
         _hud.SetActive(GameLoopManager.Instance.IsPaused);
-    }
-
-    public void OnStart()
-    {
-        GameManager.Instance.ChangeState(GameManager.GameStates.GAME);
     }
 
     public void OnRestart()
@@ -120,11 +124,6 @@ public class UIController : MonoBehaviour
         Application.Quit();
     }
 
-    public void OnCredits()
-    {
-        GameManager.Instance.ChangeState(GameManager.GameStates.CREDITS);
-    }
-
     public void OnResume()
     {
         GameLoopManager.Instance.IsPaused = false;
@@ -141,4 +140,5 @@ public class UIController : MonoBehaviour
         Scoring.Instance.MinutesSeconds -= TimeUpdate;
         PlayerManager.Instance.UpdateMoney -= MoneyUpdate;
     }
+    #endregion Methods
 }

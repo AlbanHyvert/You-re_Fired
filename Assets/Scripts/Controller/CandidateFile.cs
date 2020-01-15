@@ -8,13 +8,8 @@ public class CandidateFile : MonoBehaviour, IAction
 {
     #region Fields
     private int _candidatePrice = 0;
-    public int CandidatePrice { get { return _candidatePrice; } set { _candidatePrice = value; } }
-
     private int _candidateGain = 0;
-    public int CandidateGain { get { return _candidateGain; } set { _candidateGain = value; } }
-
     private int _candidateBounty = 0;
-    public int CandidateBounty { get { return _candidateBounty; } }
 
     #region TextMeshPro
     [Header("TextMeshPro")]
@@ -34,10 +29,11 @@ public class CandidateFile : MonoBehaviour, IAction
     public TextMeshProUGUI FirstNameTxt { get { return _firstNameTxt; } set { _firstNameTxt = value; } }
     public TextMeshProUGUI LastNameTxt { get { return _lastNameTxt; } set { _lastNameTxt = value; } }
     public TextMeshProUGUI AgeTxt { get { return _ageTxt; } set { _ageTxt = value; } }
-   // public TextMeshProUGUI SalaryTxt { get { return _salaryTxt; } }
-   // public TextMeshProUGUI GainTxt { get { return _gainTxt; } }
     public TextMeshProUGUI RankTxt { get { return _rankTxt; } set { _rankTxt = value; } }
     public TextMeshProUGUI DescriptionTxt { get { return _descriptionTxt; } set { _descriptionTxt = value; } }
+    public int CandidateBounty { get { return _candidateBounty; } }
+    public int CandidateGain { get { return _candidateGain; } set { _candidateGain = value; } }
+    public int CandidatePrice { get { return _candidatePrice; } set { _candidatePrice = value; } }
     #endregion Properties
 
     public void Start()

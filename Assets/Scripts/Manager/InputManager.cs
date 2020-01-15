@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputManager : Singleton<InputManager>
 {
+    #region Fields
     private Vector3 _direction = Vector3.zero;
 
     private event Action _interact = null;
@@ -33,6 +34,7 @@ public class InputManager : Singleton<InputManager>
             _shuffle -= value;
         }
     }
+    #endregion Fields
 
     private void Start()
     {

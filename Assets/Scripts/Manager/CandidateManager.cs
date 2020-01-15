@@ -57,14 +57,16 @@ public class CandidateManager : Singleton<CandidateManager>
     #endregion CandidateList
 
     private GameObject _candidatePrefab = null;
-    public GameObject CandidatePrefab { get { return _candidatePrefab; } }
-
     private GameObject _legendaryPrefab = null;
-    public GameObject LegendaryPrefab { get { return _legendaryPrefab; } }
-
     private List<GameObject> _candidate = null;
-    public List<GameObject> Candidate { get {return _candidate; } }
+
     #endregion Fields
+
+    #region Properties
+    public List<GameObject> Candidate { get { return _candidate; } }
+    public GameObject LegendaryPrefab { get { return _legendaryPrefab; } }
+    public GameObject CandidatePrefab { get { return _candidatePrefab; } }
+    #endregion Properties
 
     private void Start()
     {

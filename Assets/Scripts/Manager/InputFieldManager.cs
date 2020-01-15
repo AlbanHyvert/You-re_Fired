@@ -16,7 +16,9 @@ public class InputFieldManager : Singleton<InputFieldManager>
 
     #endregion Fields
 
+    #region Properties
     public int VerticalSensivity { get { return _verticalSensivity; } set { _verticalSensivity = value; } }
     public int HorizontalSensivity { get { return _horizontalSensivity; } set { _horizontalSensivity = value; } }
     public string Shuffle { get { return _shuffle; } set { _shuffle = value; } }
+    #endregion Properties
 }

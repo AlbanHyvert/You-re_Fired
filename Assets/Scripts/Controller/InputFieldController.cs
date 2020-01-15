@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class InputFieldController : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private TMP_InputField _shuffleTmp = null;
 
     [SerializeField] private Slider _verticalSensivity = null;
@@ -11,7 +12,9 @@ public class InputFieldController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _verticalSensivtTmp = null;
     [SerializeField] private TextMeshProUGUI _horizontalSensivityTmp = null;
+    #endregion Fields
 
+    #region Methods
     private void Start()
     {
         _verticalSensivity.value = InputFieldManager.Instance.VerticalSensivity;
@@ -46,4 +49,7 @@ public class InputFieldController : MonoBehaviour
         InputFieldManager.Instance.HorizontalSensivity = _tempHoriSens;
         _horizontalSensivityTmp.text = _tempHoriSens.ToString();
     }
+    #endregion Methods
+
+
 }

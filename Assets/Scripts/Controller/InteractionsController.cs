@@ -2,10 +2,10 @@
 
 public class InteractionsController : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private Camera _playerCam = null;
 
     private Transform _choosenOne = null;
-    public Transform ChoosenOne { get { return _choosenOne; } set { _choosenOne = value; } }
 
     [Header("Layers")]
     [SerializeField] private string _pickableTag = "Pickable";
@@ -13,6 +13,11 @@ public class InteractionsController : MonoBehaviour
 
     private bool _isPick = false;
     private Rigidbody _objectCache = null;
+    #endregion Fields
+
+    #region Properties
+    public Transform ChoosenOne { get { return _choosenOne; } set { _choosenOne = value; } }
+    #endregion Properties
 
     public void OnPickUp()
     {

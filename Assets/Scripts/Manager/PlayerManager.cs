@@ -18,37 +18,14 @@ public class PlayerManager : Singleton<PlayerManager>
     [SerializeField] private GameObject _playerPrefab = null;
     [Header("Interactions Controller")]
     [SerializeField] private InteractionsController _interactionController = null;
-    public InteractionsController Interactions { get { return _interactionController; } set { _interactionController = value; } }
 
     [Header("Can player Interact")]
     [SerializeField] private bool _canPlayerInteract = true;
-    public bool CanPlayerInteract { get { return _canPlayerInteract; } }
 
     private GameObject _player = null;
-    public GameObject Player { get { return _player; } }
-
-    [Header("Player Hp")]
-    [SerializeField] private int _hp = 100;
-    public int Hp { get { return _hp; } set { _hp = value; } }
 
     [Header("Player Money")]
     [SerializeField] private int _money = 200;
-    public int Money { get { return _money; } set { _money = value; } }
-
-    private event Action<int> _updateHp = null;
-    public event Action<int> UpdateHp
-    {
-        add
-        {
-            _updateHp -= value;
-            _updateHp += value;
-        }
-        remove
-        {
-            _updateHp -= value;
-        }
-    }
-
     private event Action<int> _updateMoney = null;
     public event Action<int> UpdateMoney
     {
@@ -63,6 +40,13 @@ public class PlayerManager : Singleton<PlayerManager>
         }
     }
     #endregion Fields
+
+    #region Properties
+    public bool CanPlayerInteract { get { return _canPlayerInteract; } }
+    public int Money { get { return _money; } set { _money = value; } }
+    public GameObject Player { get { return _player; } }
+    public InteractionsController Interactions { get { return _interactionController; } set { _interactionController = value; } }
+    #endregion Properties
 
     #region Methods
     private void Start()
@@ -82,11 +66,6 @@ public class PlayerManager : Singleton<PlayerManager>
 
     private void OnUpdate()
     {
-        if(_updateHp != null)
-        {
-            _updateHp(_hp);
-        }
-
         if(_updateMoney != null)
         {
             _updateMoney(_money);
@@ -97,7 +76,6 @@ public class PlayerManager : Singleton<PlayerManager>
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        _updateHp = null;
         _updateMoney = null;
         GameLoopManager.Instance.GetPlayer -= OnUpdate;
     }
