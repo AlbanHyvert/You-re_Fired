@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _gain = null;
     [SerializeField] private TextMeshProUGUI _timerMinutes_txt = null;
     [SerializeField] private TextMeshProUGUI _timerSeconds_txt = null;
+    [SerializeField] private TextMeshProUGUI _scoring_txt = null;
 
     private int _tempPlayerMoney = 0;
     private int _tempMinutes = 0;
@@ -84,6 +85,7 @@ public class UIController : MonoBehaviour
         if(Scoring.Instance.TimeMinutes <= 0 && Scoring.Instance.TimeSeconds <= 0)
         {
             _gameOver.SetActive(true);
+            _scoring_txt.text = UIHelper.FormatIntegerString(PlayerManager.Instance.Money);
         }
 
         if (GameLoopManager.Instance.IsPaused == true)
