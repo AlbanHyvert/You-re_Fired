@@ -21,6 +21,7 @@ public class UIController : MonoBehaviour
     #region Methods
     private void Start()
     {
+        _gameOver.SetActive(false);
         GameLoopManager.Instance.IsPaused = false;
         if (_gain != null)
             _gain.text = Scoring.Instance.GlobalGain.ToString();
@@ -114,6 +115,8 @@ public class UIController : MonoBehaviour
     {
         PlayerManager.Instance.Money = _tempPlayerMoney;
         Scoring.Instance.GlobalGain = 0;
+        Scoring.Instance.TimeMinutes = _tempMinutes;
+        Scoring.Instance.TimeSeconds = _tempSeconds;
         GameLoopManager.Instance.IsPaused = false;
         _hud.SetActive(GameLoopManager.Instance.IsPaused);
         GameManager.Instance.ChangeState(GameManager.GameStates.MAINMENU);

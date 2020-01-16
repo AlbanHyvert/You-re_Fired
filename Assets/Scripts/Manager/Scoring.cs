@@ -15,7 +15,7 @@ public class Scoring : Singleton<Scoring>
     [SerializeField] private int _timeSecond = 59;
 
     [SerializeField] private float _gainTimer = 1.1f;
-    [SerializeField] private float _globalTimer = 59f;
+    [SerializeField] private int _globalTimer = 59;
 
     private Timer _gainTime = null;
     private Timer _globalTime = null;
@@ -24,6 +24,7 @@ public class Scoring : Singleton<Scoring>
     #region Properties
     public int TimeSeconds { get { return _timeSecond; } set { _timeSecond = value; } }
     public int TimeMinutes { get { return _timeMinutes; } set { _timeMinutes = value; } }
+    public int GlobalTimer { get { return _globalTimer; } set { _globalTimer = value; } }
     public int GlobalGain { get { return _globalGain; } set { _globalGain = value; } }
     #endregion Properties
 

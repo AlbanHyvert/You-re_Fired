@@ -6,8 +6,7 @@ public class GameLoopManager : Singleton<GameLoopManager>
 {
     #region Fields
     private bool _isPaused = false;
-    public bool IsPaused { get { return _isPaused; }
-        set { _isPaused = value; } }
+    public bool IsPaused { get { return _isPaused; } set { _isPaused = value; } }
 
     private event Action _getPlayer = null;
     public event Action GetPlayer
